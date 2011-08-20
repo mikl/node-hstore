@@ -1,0 +1,17 @@
+{
+  "author": "Mikkel Hoegh <mikkel@hoegh.org> (http://mikkel.hoegh.org/)",
+  "name": "hstore",
+  "description": "Library for transforming JavaScript objects to hstore format, used by the PostgreSQL RDBMS.",
+  "keywords" : ["postgres", "postgre", "database", "rdbms"],
+  "main" : "hstore.js",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikl/node-hstore.git"
+  },
+  "engines": {
+    "node": "~v0.4.10"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
