@@ -24,9 +24,12 @@ function convertToString(value) {
 /**
  * Quote a string.
  */
-function quoteString(string) {
+function quoteString(qString) {
+  // Fairly brutal stripping of unsafe characters.
+  qString = qString.replace(/[\\"'\t\r\n\v]/, '')
+
   // Naïve quoting of strings. Assumes there's not quotes in the string.
-  return '"' + string + '"';
+  return '"' + qString + '"';
 }
 
 /**
