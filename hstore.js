@@ -1,10 +1,9 @@
 /**
  * Module for converting JavaScript objects to hstore format.
  */
+"use strict";
 
 var hstore = {};
-
-"use strict";
 
 /**
  * Convert an arbitrary value to string.
@@ -34,7 +33,7 @@ function quoteString(string) {
  * Convert JavaScript object to hstore format.
  */
 hstore.stringify = function (data) {
-  pairs = [];
+  var pairs = [];
 
   Object.keys(data).forEach(function (key) {
     var value = convertToString(data[key]);
