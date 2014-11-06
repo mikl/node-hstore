@@ -9,40 +9,30 @@ var hstore = {};
  * Convert an arbitrary value to string.
  */
 function convertToString(value) {
+  if (value === null) {
+    return 'NULL';
+  }
+  
   switch (typeof value) {
     case 'boolean':
       return String(value);
-    case 'null':
-      return 'NULL';
     case 'number':
       return isFinite(value) ? String(value) : 'NULL'
     case 'string':
-      return quoteString(value);
+      return JSON.stringify(value);
   }
-}
-
-/**
- * Quote a string.
- */
-function quoteString(qString) {
-  // Fairly brutal stripping of unsafe characters.
-  qString = qString.replace(/[\\"'\t\r\n\v]/, '')
-
-  // Naïve quoting of strings. Assumes there's not quotes in the string.
-  return '"' + qString + '"';
 }
 
 /**
  * Convert JavaScript object to hstore format.
  */
 hstore.stringify = function (data) {
-  var pairs = [];
-
-  Object.keys(data).forEach(function (key) {
+  
+  var pairs = Object.keys(data).map(function (key) {
     var value = convertToString(data[key]);
 
     if (value) {
-      pairs.push('"' + key + '"=>' + value);
+      return JSON.stringify(key) + '=>' + value;
     }
   });
 
